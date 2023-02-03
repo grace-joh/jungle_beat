@@ -28,6 +28,33 @@ RSpec.describe LinkedList do
       expect(list.head.data).to eq("doop")
       expect(list.head.next_node).to eq(nil)
       expect(list.count).to eq(1)
+      expect(list.current_node).to eq(list.head)
+    end
+
+    it 'appends a second node as the next node' do
+      list = LinkedList.new
+      list.append("doop")
+      list.append("deep")
+      
+
+      expect(list.head).to be_a(Node)
+      expect(list.head.data).to eq("doop")
+      expect(list.head.next_node).to be_a(Node)
+      expect(list.head.next_node.data).to eq("deep")
+      expect(list.count).to eq(2)
+    end
+
+    it 'appends a multiple nodes' do
+      list = LinkedList.new
+      list.append("doop")
+      list.append("deep")
+      list.append("bop")
+      
+      expect(list.head).to be_a(Node)
+      expect(list.head.data).to eq("doop")
+      expect(list.current_node.data).to eq("bop")
+      expect(list.count).to eq(3)
     end
   end
+
 end
