@@ -32,4 +32,15 @@ class LinkedList
     end
     sounds.join(' ')
   end
+
+  def prepend(sound)
+    if count > 0
+      prepend_node = Node.new(sound)
+      prepend_node.next_node = @head
+      @head = prepend_node
+    elsif count == 0
+      append(sound)
+    end
+    sound
+  end
 end
