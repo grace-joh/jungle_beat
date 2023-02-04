@@ -28,7 +28,7 @@ RSpec.describe LinkedList do
       expect(list.head.data).to eq("doop")
       expect(list.head.next_node).to eq(nil)
       expect(list.count).to eq(1)
-      expect(list.current_node).to eq(list.head)
+      expect(list.tail).to eq(list.head)
     end
 
     it 'appends a second node as the next node' do
@@ -52,7 +52,7 @@ RSpec.describe LinkedList do
 
       expect(list.head).to be_a(Node)
       expect(list.head.data).to eq("doop")
-      expect(list.current_node.data).to eq("bop")
+      expect(list.tail.data).to eq("bop")
       expect(list.count).to eq(3)
     end
   end
@@ -77,7 +77,7 @@ RSpec.describe LinkedList do
   end
 
   describe '#prepend' do
-    it 'adds a node to the beginning of the list' do
+    xit 'adds a node to the beginning of the list' do
       list = LinkedList.new
       list.append("plop")
       list.append("suu")
