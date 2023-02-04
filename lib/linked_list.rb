@@ -1,19 +1,19 @@
 class LinkedList
-  attr_reader :head, :count, :current_node
+  attr_reader :head, :count, :tail
 
   def initialize
     @head = nil
     @count = 0
-    @current_node = nil
+    @tail = nil
   end
 
   def append(sound)
     if count > 0
-      @current_node.next_node = Node.new(sound)
-      @current_node = @current_node.next_node
+      @tail.next_node = Node.new(sound)
+      @tail = @tail.next_node
     elsif count == 0
       @head = Node.new(sound)
-      @current_node = @head
+      @tail = @head
     end
     @count += 1
     sound
