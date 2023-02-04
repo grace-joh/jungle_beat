@@ -23,8 +23,7 @@ class LinkedList
   def to_string
     sounds = []
     if @head != nil
-      sounds << @head.data
-      current_sound_node = @head.next_node
+      current_sound_node = @head
       until current_sound_node == nil
         sounds << current_sound_node.data
         current_sound_node = current_sound_node.next_node
