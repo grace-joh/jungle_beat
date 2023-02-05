@@ -19,7 +19,6 @@ class LinkedList
     sound
   end
 
-
   def to_string
     sounds = []
     if @head != nil
@@ -76,5 +75,24 @@ class LinkedList
       end
     end
     sound
+  end
+
+  def find(find_num, num_to_return)
+    if @count == 0
+      "The list is empty! Please try again."
+    elsif find_num > @count || find_num + num_to_return > @count
+      "The list only has #{@count} sounds.. Please try again."
+    else
+      sounds_to_return = []
+      find_node = @head
+      find_num.times do
+        find_node = find_node.next_node
+      end
+      num_to_return.times do
+        sounds_to_return << find_node.data
+        find_node = find_node.next_node
+      end
+      sounds_to_return.join(' ')
+    end
   end
 end
