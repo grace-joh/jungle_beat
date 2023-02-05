@@ -11,4 +11,8 @@ class JungleBeat
   def append(sounds)
     sounds.split(' ').each {|sound| @list.append(sound)}
   end
+
+  def count
+    @list.count
+  end
 end
