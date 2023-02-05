@@ -99,5 +99,46 @@ RSpec.describe LinkedList do
       expect(list.to_string).to eq("dop woo plop suu")
       expect(list.count).to eq(4)
     end
+
+    it 'adds a node if the list is empty' do
+      list = LinkedList.new
+      list.insert(1, "woo")
+
+      expect(list.to_string).to eq("woo")
+      expect(list.count).to eq(1)
+    end
+
+    it 'prepends a node if insert to 0' do
+      list = LinkedList.new
+      list.append("plop")
+      list.append("suu")
+      list.prepend("dop")
+      list.insert(0, "woo")
+
+      expect(list.to_string).to eq("woo dop plop suu")
+      expect(list.count).to eq(4)
+    end
+
+    it 'appends a node if insert to tail' do
+      list = LinkedList.new
+      list.append("plop")
+      list.append("suu")
+      list.prepend("dop")
+      list.insert(3, "woo")
+
+      expect(list.to_string).to eq("dop plop suu woo")
+      expect(list.count).to eq(4)
+    end
+
+    it 'appends a node if insert to past tail with alert' do
+      list = LinkedList.new
+      list.append("plop")
+      list.append("suu")
+      list.prepend("dop")
+      list.insert(10, "woo")
+
+      expect(list.to_string).to eq("dop plop suu woo")
+      expect(list.count).to eq(4)
+    end
   end
 end
