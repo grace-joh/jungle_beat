@@ -141,4 +141,41 @@ RSpec.describe LinkedList do
       expect(list.count).to eq(4)
     end
   end
+
+  describe '#find' do
+
+    it 'finds a node at given position and prints requested number of nodes' do
+      list = LinkedList.new
+      list.append("deep")
+      list.append("woo")
+      list.append("shi")
+      list.append("shu")
+      list.append("blop")
+
+      expect(list.find(2, 1)).to eq("shi")
+      expect(list.find(1, 3)).to eq("woo shi shu")
+    end
+
+    # edge case - list is empty
+    it 'checks if find is called on empty list' do
+      list = LinkedList.new
+      
+      expect(list.find(2, 1)).to eq("The list is empty! Please try again.")
+    end
+
+    # edge case - position of first requested node is greater than list count
+    # edge case - number of returned sounds wanted is more than existing list
+    it 'checks requested starting sound position and returned sound count' do
+      list = LinkedList.new
+      list.append("deep")
+      list.append("woo")
+      list.append("shi")
+      list.append("shu")
+      list.append("blop")
+
+      expect(list.find(10, 1)).to eq("The list only has #{list.count} sounds.. Please try again.")
+      expect(list.find(2, 6)).to eq("The list only has #{list.count} sounds.. Please try again.")
+    end
+
+  end
 end
