@@ -1,19 +1,19 @@
 class LinkedList
-  attr_reader :head, :count, :current_node
+  attr_reader :head, :count, :tail
 
   def initialize
     @head = nil
     @count = 0
-    @current_node = nil
+    @tail = nil
   end
 
   def append(sound)
     if count > 0
-      @current_node.next_node = Node.new(sound)
-      @current_node = @current_node.next_node
+      @tail.next_node = Node.new(sound)
+      @tail = @tail.next_node
     elsif count == 0
       @head = Node.new(sound)
-      @current_node = @head
+      @tail = @head
     end
     @count += 1
     sound
@@ -23,8 +23,7 @@ class LinkedList
   def to_string
     sounds = []
     if @head != nil
-      sounds << @head.data
-      current_sound_node = @head.next_node
+      current_sound_node = @head
       until current_sound_node == nil
         sounds << current_sound_node.data
         current_sound_node = current_sound_node.next_node
@@ -32,5 +31,16 @@ class LinkedList
     # else (list is empty and head is nil) output some error message?
     end
     sounds.join(' ')
+  end
+
+  def prepend(sound)
+    if count > 0
+      prepend_node = Node.new(sound)
+      prepend_node.next_node = @head
+      @head = prepend_node
+    elsif count == 0
+      append(sound)
+    end
+    sound
   end
 end
