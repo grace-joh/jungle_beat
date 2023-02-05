@@ -15,4 +15,8 @@ class JungleBeat
   def count
     @list.count
   end
+
+  def play
+    `say -r 500 -v Daniel #{@list.to_string}`
+  end
 end
