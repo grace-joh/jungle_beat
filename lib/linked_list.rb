@@ -95,4 +95,14 @@ class LinkedList
       sounds_to_return.join(' ')
     end
   end
+
+  def includes?(sound)
+    current_node = @head
+    included = false
+    until current_node == nil
+      break included = true if current_node.data == sound
+      current_node = current_node.next_node
+    end
+    included
+  end
 end

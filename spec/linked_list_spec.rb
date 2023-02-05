@@ -178,4 +178,26 @@ RSpec.describe LinkedList do
     end
 
   end
+
+  describe '#includes?' do
+
+    it 'checks if sound is in list' do
+      list = LinkedList.new
+      list.append("deep")
+      list.append("woo")
+      list.append("shi")
+      list.append("shu")
+      list.append("blop")
+
+      expect(list.includes?("blop")).to eq(true)
+      expect(list.includes?("dep")).to eq(false)
+    end
+
+    it 'returns false if list is empty' do
+      list = LinkedList.new
+
+      expect(list.includes?("deep")).to eq(false)
+      expect(list.includes?("dep")).to eq(false)
+    end
+  end
 end
