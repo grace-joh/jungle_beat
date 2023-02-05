@@ -77,15 +77,25 @@ RSpec.describe LinkedList do
   end
 
   describe '#prepend' do
-    xit 'adds a node to the beginning of the list' do
+    it 'adds a node to the beginning of the list' do
       list = LinkedList.new
       list.append("plop")
       list.append("suu")
-      require 'pry'; binding.pry
       list.prepend("dop")
 
       expect(list.to_string).to eq("dop plop suu")
     end
   end
 
+  describe '#insert' do
+    it 'adds a node to a given position in the list' do
+      list = LinkedList.new
+      list.append("plop")
+      list.append("suu")
+      list.prepend("dop")
+      list.insert("woo")
+
+      expect(list.to_string).to eq("dop woo plop suu")
+    end
+  end
 end
