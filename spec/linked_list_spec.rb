@@ -100,13 +100,7 @@ RSpec.describe LinkedList do
       expect(list.count).to eq(4)
     end
 
-    it 'adds a node if the list is empty' do
-      list = LinkedList.new
-      list.insert(1, "woo")
-
-      expect(list.to_string).to eq("woo")
-      expect(list.count).to eq(1)
-    end
+    
 
     it 'prepends a node if insert to 0' do
       list = LinkedList.new
@@ -130,15 +124,19 @@ RSpec.describe LinkedList do
       expect(list.count).to eq(4)
     end
 
-    it 'appends a node if insert to past tail with alert' do
+    it 'sends error message if the list is empty' do
+      list = LinkedList.new
+      
+      expect(list.insert(1, "woo")).to eq("The list is empty.")
+    end
+
+    it 'sends error message if insert past list length' do
       list = LinkedList.new
       list.append("plop")
       list.append("suu")
       list.prepend("dop")
-      list.insert(10, "woo")
-
-      expect(list.to_string).to eq("dop plop suu woo")
-      expect(list.count).to eq(4)
+      
+      expect(list.insert(10, "woo")).to eq("The insert position number is greater than the length of this list.")
     end
   end
 
