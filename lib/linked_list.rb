@@ -1,3 +1,5 @@
+require './lib/node'
+
 class LinkedList
   attr_reader :head, :count, :tail
 

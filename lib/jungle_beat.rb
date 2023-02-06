@@ -1,5 +1,4 @@
 require './lib/linked_list'
-require './lib/node'
 
 class JungleBeat
   attr_reader :list
