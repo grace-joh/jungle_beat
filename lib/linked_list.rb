@@ -44,36 +44,24 @@ class LinkedList
   end
 
   def insert(insert_index, sound)
-    if @count == 0
-      append(sound)
-    elsif @count > 0
-      if insert_index == 0
-        prepend(sound)
-      elsif insert_index == @count
-        append(sound)
-      elsif insert_index > @count
-        append(sound)
-        puts "The insert position number is greater than the length of this list."
-        puts "Your new sound has been added to the end of the list."
+    if insert_index > @count
+      if @count == 0
+        "The list is empty."
       else
-        insert_node = Node.new(sound)
-        # traverse through list and set insert's next node to given position's node
-        post_node = @head
-        insert_index.times do
-          post_node = post_node.next_node
-        end
-        insert_node.next_node = post_node
-
-        # traverse through list to previous node and set it's next node to insert node
-        pre_node = @head
-        (insert_index - 1).times do
-          pre_node = pre_node.next_node
-        end
-        pre_node.next_node = insert_node
-        @count += 1
+        "The insert position number is greater than the length of this list."
       end
+    else
+      current_node = @head 
+      (insert_index - 1).times do 
+        current_node = current_node.next_node
+      end
+      insert_node = Node.new(sound)
+      insert_node.next_node = current_node.next_node
+      current_node.next_node = insert_node
+      @count += 1
+      sound
     end
-    sound
+    
   end
 
   def find(find_index, num_to_return)
