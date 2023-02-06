@@ -20,16 +20,17 @@ class LinkedList
   end
 
   def to_string
-    sounds = []
+    sounds = ""
     if @head != nil
       current_sound_node = @head
-      until current_sound_node == nil
-        sounds << current_sound_node.data
+      sounds << current_sound_node.data
+      until current_sound_node.next_node == nil
         current_sound_node = current_sound_node.next_node
+        sounds << ' ' << current_sound_node.data
       end
     # else (list is empty and head is nil) output some error message?
     end
-    sounds.join(' ')
+    sounds
   end
 
   def prepend(sound)
