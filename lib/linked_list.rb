@@ -30,7 +30,7 @@ class LinkedList
       sounds << current_sound_node.data
       until current_sound_node.next_node == nil
         current_sound_node = current_sound_node.next_node
-        sounds << ' ' << current_sound_node.data
+        sounds << " #{current_sound_node.data}"
       end
       sounds
     end
