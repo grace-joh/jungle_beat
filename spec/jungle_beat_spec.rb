@@ -85,6 +85,22 @@ RSpec.describe JungleBeat do
     end
   end
 
+  describe "prepend" do
+    it 'prepends multiple sounds' do
+      jb = JungleBeat.new
+      jb.append("woo hoo shu")
+      jb.prepend("deep doo ditt")
+
+      expect(jb.all).to eq("deep doo ditt woo hoo shu")
+    end
+
+    it 'omits any word not in defined list' do
+      jb = JungleBeat.new("deep")
+
+      expect(jb.prepend("Mississippi")).to eq(0)
+    end
+  end
+
   describe '#valid_beats' do
     it 'checks if the sound is in the list' do
       jb = JungleBeat.new
