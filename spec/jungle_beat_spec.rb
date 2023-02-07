@@ -34,6 +34,16 @@ RSpec.describe JungleBeat do
     end
   end
 
+  describe '#all' do
+
+    it 'returns all the sounds in the list' do
+      jb = JungleBeat.new("deep")
+      jb.append("deep")
+
+      expect(jb.all).to eq("deep deep")
+    end
+  end
+
   describe '#append' do
     
     it 'makes nodes for each sound in a given string' do
