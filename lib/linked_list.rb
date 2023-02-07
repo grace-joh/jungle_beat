@@ -23,25 +23,29 @@ class LinkedList
 
   def to_string
     sounds = ""
-    if @head != nil
+    if count == 0
+      "The list is empty."
+    else
       current_sound_node = @head
       sounds << current_sound_node.data
       until current_sound_node.next_node == nil
         current_sound_node = current_sound_node.next_node
         sounds << ' ' << current_sound_node.data
       end
-    else
-      "The list is empty."
+      sounds
     end
-    sounds
   end
 
   def prepend(sound)
-    prepend_node = Node.new(sound)
-    prepend_node.next_node = @head
-    @head = prepend_node
-    @count += 1
-    sound
+    if count == 0
+      append(sound)
+    else
+      prepend_node = Node.new(sound)
+      prepend_node.next_node = @head
+      @head = prepend_node
+      @count += 1
+      sound
+    end
   end
 
   def insert(insert_index, sound)
@@ -85,13 +89,17 @@ class LinkedList
   end
 
   def includes?(sound)
-    current_node = @head
-    included = false
-    until current_node == nil
-      break included = true if current_node.data == sound
-      current_node = current_node.next_node
+    if count == 0
+      "The list is empty."
+    else
+      current_node = @head
+      included = false
+      until current_node == nil
+        break included = true if current_node.data == sound
+        current_node = current_node.next_node
+      end
+      included
     end
-    included
   end
 
   def pop
