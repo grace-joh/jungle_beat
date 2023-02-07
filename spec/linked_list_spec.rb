@@ -7,17 +7,14 @@ RSpec.describe LinkedList do
       list = LinkedList.new
 
       expect(list).to be_an_instance_of(LinkedList)
-    end
-
-    it 'has a head node with default nil' do
-      list = LinkedList.new
-
       expect(list.head).to eq(nil)
+      expect(list.count).to eq(0)
+      expect(list.tail).to eq(nil)
     end
   end
 
   describe '#append' do
-    it 'appends the first sound as the head node' do
+    it 'appends the first sound as the head and tail' do
       list = LinkedList.new
       list.append("doop")
 
@@ -70,6 +67,12 @@ RSpec.describe LinkedList do
 
       expect(list.to_string).to eq("doop doop deep dop doop doo dah deep dop")
     end
+
+    it 'alerts if list is empty' do
+      list = LinkedList.new
+
+      expect(list.to_string).to eq("The list is empty.")
+    end
   end
 
   describe '#prepend' do
@@ -81,6 +84,17 @@ RSpec.describe LinkedList do
 
       expect(list.to_string).to eq("dop plop suu")
       expect(list.count).to eq(3)
+    end
+
+    it 'adds a sound as the head and tail if the list is empty' do
+      list = LinkedList.new
+      list.prepend("doop")
+
+      expect(list.head).to be_a(Node)
+      expect(list.head.data).to eq("doop")
+      expect(list.head.next_node).to eq(nil)
+      expect(list.count).to eq(1)
+      expect(list.tail).to eq(list.head)
     end
   end
 
@@ -183,8 +197,7 @@ RSpec.describe LinkedList do
     it 'returns false if list is empty' do
       list = LinkedList.new
 
-      expect(list.includes?("deep")).to eq(false)
-      expect(list.includes?("dep")).to eq(false)
+      expect(list.includes?("deep")).to eq("The list is empty.")
     end
   end
 

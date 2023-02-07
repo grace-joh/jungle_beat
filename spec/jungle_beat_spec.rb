@@ -3,44 +3,26 @@ require './lib/jungle_beat'
 
 RSpec.describe JungleBeat do
   describe '#initialize' do
-    it 'exists' do
+    it 'exists with default values' do
       jb = JungleBeat.new
 
       expect(jb).to be_an_instance_of(JungleBeat)
       expect(jb.list).to be_an_instance_of(LinkedList)
-      expect(jb.list.head).to be_nil
+      expect(jb.rate).to eq(500)
+      expect(jb.voice).to eq("Boing")
+      expect(jb.all).to eq("The list is empty.")
     end
 
-    it 'returns the numbers of sounds in a list' do
+    it 'exists with init_sounds argument' do
       jb = JungleBeat.new
       jb.append("deep doo ditt")
       jb.append("woo hoo shu")
 
+      expect(jb).to be_an_instance_of(JungleBeat)
       expect(jb.count).to eq(6)
-    end
-
-    it 'has a default rate of 500' do
-      jb = JungleBeat.new("deep")
-
       expect(jb.rate).to eq(500)
-    end
-
-    it 'has a default voice of Boing' do
-      jb = JungleBeat.new("deep")
-
       expect(jb.voice).to eq("Boing")
-    end
-
-    it 'appends every sound it is initialized with' do
-      jb = JungleBeat.new("deep")
-
-      expect(jb.all).to eq("deep")
-    end
-
-    it 'has a default of no sounds' do
-      jb = JungleBeat.new
-
-      expect(jb.all).to eq("")
+      expect(jb.all).to eq("deep doo ditt woo hoo shu")
     end
   end
 
@@ -50,6 +32,12 @@ RSpec.describe JungleBeat do
       jb.append("deep")
 
       expect(jb.all).to eq("deep deep")
+    end
+
+    it 'alerts if the list is empty' do
+      jb = JungleBeat.new
+
+      expect(jb.all).to eq("The list is empty.")
     end
   end
 
@@ -65,9 +53,14 @@ RSpec.describe JungleBeat do
 
     it 'omits any word not in defined list' do
       jb = JungleBeat.new
-      jb.append("Mississippi")
 
-      expect(jb.count).to eq(0)
+      expect(jb.append("Mississippi")).to eq(0)
+    end
+
+    it "returns the count of permissible words" do
+      jb = JungleBeat.new
+      
+      expect(jb.append("doo dah Mississippi")).to eq(2)
     end
   end
 
@@ -77,6 +70,16 @@ RSpec.describe JungleBeat do
       jb.append("deep doo ditt")
       jb.append("woo hoo shu")
 
+      expect(jb.play)
+    end
+
+    it 'accepts changed rate and voice' do
+      jb = JungleBeat.new("deep doo ditt woo hoo shu")
+      jb.rate = 100
+      jb.voice = "Daniel"
+      
+      expect(jb.rate).to eq(100)
+      expect(jb.voice).to eq("Daniel")
       expect(jb.play)
     end
   end
@@ -94,6 +97,12 @@ RSpec.describe JungleBeat do
       jb = JungleBeat.new("deep")
 
       expect(jb.prepend("Mississippi")).to eq(0)
+    end
+
+    it "returns the count of permissible words" do
+      jb = JungleBeat.new
+      
+      expect(jb.prepend("doo dah Mississippi")).to eq(2)
     end
   end
 
