@@ -49,12 +49,10 @@ class LinkedList
   end
 
   def insert(insert_index, sound)
-    if insert_index > @count
-      if @count == 0
-        "The list is empty."
-      else
-        "The insert position number is greater than the length of this list."
-      end
+    if @count == 0
+      "The list is empty."
+    elsif insert_index > @count
+      "The insert position number is greater than the length of this list."
     else
       current_node = @head 
       (insert_index - 1).times do 
