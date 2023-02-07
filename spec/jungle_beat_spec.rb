@@ -21,6 +21,17 @@ RSpec.describe JungleBeat do
       expect(jb.count).to eq(6)
     end
 
+    it 'has a default rate of 500' do
+      jb = JungleBeat.new("deep")
+
+      expect(jb.rate).to eq(500)
+    end
+
+    it 'has a default voice of Boing' do
+      jb = JungleBeat.new("deep")
+
+      expect(jb.voice).to eq("Boing")
+    end
 
     it 'appends every sound it is initialized with' do
       jb = JungleBeat.new("deep")
