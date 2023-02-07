@@ -71,7 +71,7 @@ class LinkedList
     if @count == 0
       'The list is empty. Please try again.'
     elsif find_index > @count || find_index + num_to_return > @count
-      'The list only has #{@count} sounds.. Please try again.'
+      "The list only has #{@count} sounds.. Please try again."
     else
       sounds_to_return = []
       find_node = @head

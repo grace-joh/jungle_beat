@@ -175,8 +175,8 @@ RSpec.describe LinkedList do
       list.append('shu')
       list.append('blop')
 
-      expect(list.find(10, 1)).to eq('The list only has #{list.count} sounds.. Please try again.')
-      expect(list.find(2, 6)).to eq('The list only has #{list.count} sounds.. Please try again.')
+      expect(list.find(10, 1)).to eq("The list only has #{list.count} sounds.. Please try again.")
+      expect(list.find(2, 6)).to eq("The list only has #{list.count} sounds.. Please try again.")
     end
 
   end
