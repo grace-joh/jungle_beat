@@ -33,6 +33,18 @@ class JungleBeat
     `say -r 500 -v Daniel #{@list.to_string}`
   end
 
+  def prepend(sounds)
+    prepend_count = 0
+    sounds.split(' ').reverse().each do |sound| 
+      if valid_beat?(sound)
+        @list.prepend(sound) 
+        prepend_count += 1
+      end
+    end
+    @count += prepend_count
+    prepend_count
+  end
+
   def valid_beat?(sound)
     valid_sounds = ["tee", "dee", "deep", "bop", "boop", "la", "na", "doo", "ditt", "woo", "hoo", "shu", "doop", "plop", "suu", "dop", "shi", "blop"]
     sound if valid_sounds.include?(sound)
