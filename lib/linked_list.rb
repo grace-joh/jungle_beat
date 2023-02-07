@@ -10,12 +10,12 @@ class LinkedList
   end
 
   def append(sound)
-    if count > 0
-      @tail.next_node = Node.new(sound)
-      @tail = @tail.next_node
-    elsif count == 0
+    if count == 0
       @head = Node.new(sound)
       @tail = @head
+    else
+      @tail.next_node = Node.new(sound)
+      @tail = @tail.next_node
     end
     @count += 1
     sound
@@ -30,7 +30,8 @@ class LinkedList
         current_sound_node = current_sound_node.next_node
         sounds << ' ' << current_sound_node.data
       end
-    # else (list is empty and head is nil) output some error message?
+    else
+      "The list is empty."
     end
     sounds
   end
@@ -66,7 +67,7 @@ class LinkedList
 
   def find(find_index, num_to_return)
     if @count == 0
-      "The list is empty! Please try again."
+      "The list is empty. Please try again."
     elsif find_index > @count || find_index + num_to_return > @count
       "The list only has #{@count} sounds.. Please try again."
     else
@@ -96,7 +97,7 @@ class LinkedList
   def pop
     current_node = @head
     if count == 0
-      "The list is empty!"
+      "The list is empty."
     else
       pop_sound = @tail.data
       (count - 2).times do

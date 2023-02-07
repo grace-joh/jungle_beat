@@ -2,9 +2,7 @@ require 'rspec'
 require './lib/linked_list'
 
 RSpec.describe LinkedList do
-
   describe '#initialize' do
-
     it 'exists' do
       list = LinkedList.new
 
@@ -19,7 +17,6 @@ RSpec.describe LinkedList do
   end
 
   describe '#append' do
-
     it 'appends the first sound as the head node' do
       list = LinkedList.new
       list.append("doop")
@@ -58,21 +55,20 @@ RSpec.describe LinkedList do
   end
 
   describe '#to_string' do
-
     it 'make a string of list nodes data' do
       list = LinkedList.new
       list.append("doop")
       list.append("doop")
-      list.append("beep")
-      list.append("bop")
+      list.append("deep")
+      list.append("dop")
       list.append("doop")
       list.append("doo")
       list.append("dah")
-      list.append("beep")
-      list.append("bop")
+      list.append("deep")
+      list.append("dop")
 
 
-      expect(list.to_string).to eq("doop doop beep bop doop doo dah beep bop")
+      expect(list.to_string).to eq("doop doop deep dop doop doo dah deep dop")
     end
   end
 
@@ -99,8 +95,6 @@ RSpec.describe LinkedList do
       expect(list.to_string).to eq("dop woo plop suu")
       expect(list.count).to eq(4)
     end
-
-    
 
     it 'prepends a node if insert to 0' do
       list = LinkedList.new
@@ -141,7 +135,6 @@ RSpec.describe LinkedList do
   end
 
   describe '#find' do
-
     it 'finds a node at given position and prints requested number of nodes' do
       list = LinkedList.new
       list.append("deep")
@@ -154,15 +147,12 @@ RSpec.describe LinkedList do
       expect(list.find(1, 3)).to eq("woo shi shu")
     end
 
-    # edge case - list is empty
     it 'checks if find is called on empty list' do
       list = LinkedList.new
       
-      expect(list.find(2, 1)).to eq("The list is empty! Please try again.")
+      expect(list.find(2, 1)).to eq("The list is empty. Please try again.")
     end
 
-    # edge case - position of first requested node is greater than list count
-    # edge case - number of returned sounds wanted is more than existing list
     it 'checks requested starting sound position and returned sound count' do
       list = LinkedList.new
       list.append("deep")
@@ -178,7 +168,6 @@ RSpec.describe LinkedList do
   end
 
   describe '#includes?' do
-
     it 'checks if sound is in list' do
       list = LinkedList.new
       list.append("deep")
@@ -200,7 +189,6 @@ RSpec.describe LinkedList do
   end
 
   describe '#pop' do
-  
     it 'removes the last element' do
       list = LinkedList.new
       list.append("deep")
@@ -224,11 +212,10 @@ RSpec.describe LinkedList do
       expect(list.pop).to eq("blop")
     end
 
-    # edge case
     it 'checks if the list is empty' do
       list = LinkedList.new
       
-      expect(list.pop).to eq("The list is empty!")
+      expect(list.pop).to eq("The list is empty.")
     end
   end
 end

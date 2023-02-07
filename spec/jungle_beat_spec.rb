@@ -2,9 +2,7 @@ require 'rspec'
 require './lib/jungle_beat'
 
 RSpec.describe JungleBeat do
-
   describe '#initialize' do
-
     it 'exists' do
       jb = JungleBeat.new
 
@@ -47,7 +45,6 @@ RSpec.describe JungleBeat do
   end
 
   describe '#all' do
-
     it 'returns all the sounds in the list' do
       jb = JungleBeat.new("deep")
       jb.append("deep")
@@ -57,7 +54,6 @@ RSpec.describe JungleBeat do
   end
 
   describe '#append' do
-    
     it 'makes nodes for each sound in a given string' do
       jb = JungleBeat.new
       jb.append("deep doo ditt")
@@ -75,19 +71,7 @@ RSpec.describe JungleBeat do
     end
   end
 
-  describe '#count' do
-
-    it 'returns the numbers of sounds in a list' do
-      jb = JungleBeat.new
-      jb.append("deep doo ditt")
-      jb.append("woo hoo shu")
-
-      expect(jb.count).to eq(6)
-    end
-  end
-
   describe '#play' do
-
     it 'returns the numbers of sounds in a list' do
       jb = JungleBeat.new
       jb.append("deep doo ditt")
@@ -137,7 +121,6 @@ RSpec.describe JungleBeat do
 
       expect(jb.valid_beat?("deep")).to eq("deep")
       expect(jb.valid_beat?("Mississippi")).to eq(nil)
-      
     end
   end
 end

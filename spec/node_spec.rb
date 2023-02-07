@@ -2,9 +2,7 @@ require 'rspec'
 require './lib/node'
 
 RSpec.describe Node do
-  
   describe '#initialize' do
-
     it 'exists' do
       node = Node.new("first")
 
@@ -14,7 +12,7 @@ RSpec.describe Node do
     it 'has a sound' do
       node = Node.new("first")
 
-      expect(node.sound).to eq("first")
+      expect(node.data).to eq("first")
     end
 
     it 'has a next_node' do

@@ -28,10 +28,6 @@ class JungleBeat
     append_count   
   end
 
-  def count
-    @list.count
-  end
-
   def play
     `say -r #{@rate} -v #{@voice} #{@list.to_string}`
   end
@@ -57,7 +53,7 @@ class JungleBeat
   end
 
   def valid_beat?(sound)
-    valid_sounds = ["tee", "dee", "deep", "bop", "boop", "la", "na", "doo", "ditt", "woo", "hoo", "shu", "doop", "plop", "suu", "dop", "shi", "blop"]
+    valid_sounds = ["tee", "dee", "deep", "bop", "boop", "la", "na", "doo", "ditt", "woo", "hoo", "shu", "doop", "plop", "suu", "dop", "shi", "blop", "dah"]
     sound if valid_sounds.include?(sound)
   end
 end
