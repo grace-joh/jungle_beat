@@ -101,17 +101,22 @@ class LinkedList
   end
 
   def pop
-    current_node = @head
     if count == 0
       'The list is empty.'
     else
       pop_sound = @tail.data
-      (count - 2).times do
-        current_node = current_node.next_node
+      if count == 1
+        @head = nil
+        @tail = nil
+      else
+        current_node = @head
+        (count - 2).times do
+          current_node = current_node.next_node
+        end
+        current_node.next_node = nil
+        @tail = current_node
+        @count -= 1
       end
-      current_node.next_node = nil
-      @tail = current_node
-      @count -= 1
       pop_sound
     end
   end

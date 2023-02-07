@@ -225,6 +225,15 @@ RSpec.describe LinkedList do
       expect(list.pop).to eq('blop')
     end
 
+    it 'pops the only sound in the list' do
+      list = LinkedList.new
+      list.append('deep')
+      
+      expect(list.pop).to eq('deep')
+      expect(list.head).to be_nil
+      expect(list.tail).to be_nil
+    end
+
     it 'checks if the list is empty' do
       list = LinkedList.new
       
