@@ -20,6 +20,18 @@ RSpec.describe JungleBeat do
 
       expect(jb.count).to eq(6)
     end
+
+    it 'appends every sound it is initialized with' do
+      jb = JungleBeat.new("deep")
+
+      expect(jb.all).to eq("deep")
+    end
+
+    it 'has a default of no sounds' do
+      jb = JungleBeat.new
+
+      expect(jb.all).to eq("")
+    end
   end
 
   describe '#append' do

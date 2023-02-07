@@ -1,11 +1,12 @@
 require './lib/linked_list'
 
 class JungleBeat
-  attr_reader :list
+  attr_reader :list, :count
 
-  def initialize
+  def initialize(init_sounds = '')
     @list = LinkedList.new
     @count = @list.count
+    append(init_sounds)
   end
 
   def append(sounds)
