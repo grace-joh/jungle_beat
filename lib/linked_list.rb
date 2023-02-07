@@ -22,9 +22,9 @@ class LinkedList
   end
 
   def to_string
-    sounds = ""
+    sounds = ''
     if count == 0
-      "The list is empty."
+      'The list is empty.'
     else
       current_sound_node = @head
       sounds << current_sound_node.data
@@ -50,9 +50,9 @@ class LinkedList
 
   def insert(insert_index, sound)
     if @count == 0
-      "The list is empty."
+      'The list is empty.'
     elsif insert_index > @count
-      "The insert position number is greater than the length of this list."
+      'The insert position number is greater than the length of this list.'
     else
       current_node = @head 
       (insert_index - 1).times do 
@@ -69,9 +69,9 @@ class LinkedList
 
   def find(find_index, num_to_return)
     if @count == 0
-      "The list is empty. Please try again."
+      'The list is empty. Please try again.'
     elsif find_index > @count || find_index + num_to_return > @count
-      "The list only has #{@count} sounds.. Please try again."
+      'The list only has #{@count} sounds.. Please try again.'
     else
       sounds_to_return = []
       find_node = @head
@@ -88,7 +88,7 @@ class LinkedList
 
   def includes?(sound)
     if count == 0
-      "The list is empty."
+      'The list is empty.'
     else
       current_node = @head
       included = false
@@ -103,7 +103,7 @@ class LinkedList
   def pop
     current_node = @head
     if count == 0
-      "The list is empty."
+      'The list is empty.'
     else
       pop_sound = @tail.data
       (count - 2).times do

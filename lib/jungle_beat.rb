@@ -8,7 +8,7 @@ class JungleBeat
     @list = LinkedList.new
     @count = @list.count
     @rate = 500
-    @voice = "Boing"
+    @voice = 'Boing'
     append(init_sounds)
   end
 
@@ -49,11 +49,11 @@ class JungleBeat
   end
 
   def reset_voice
-    @voice = "Boing"
+    @voice = 'Boing'
   end
 
   def valid_beat?(sound)
-    valid_sounds = ["tee", "dee", "deep", "bop", "boop", "la", "na", "doo", "ditt", "woo", "hoo", "shu", "doop", "plop", "suu", "dop", "shi", "blop", "dah"]
+    valid_sounds = ['tee', 'dee', 'deep', 'bop', 'boop', 'la', 'na', 'doo', 'ditt', 'woo', 'hoo', 'shu', 'doop', 'plop', 'suu', 'dop', 'shi', 'blop', 'dah']
     sound if valid_sounds.include?(sound)
   end
 end
