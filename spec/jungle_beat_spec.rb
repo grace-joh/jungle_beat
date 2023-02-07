@@ -21,6 +21,7 @@ RSpec.describe JungleBeat do
       expect(jb.count).to eq(6)
     end
 
+
     it 'appends every sound it is initialized with' do
       jb = JungleBeat.new("deep")
 
@@ -98,6 +99,24 @@ RSpec.describe JungleBeat do
       jb = JungleBeat.new("deep")
 
       expect(jb.prepend("Mississippi")).to eq(0)
+    end
+  end
+
+  describe '#reset_rate' do
+    it 'changes the rate back to 500' do
+      jb = JungleBeat.new("deep dop dop deep")
+      jb.rate = 100
+
+      expect(jb.reset_rate).to eq(500)
+    end
+  end
+
+  describe '#reset_voice' do
+    it 'changes the voice back to Boing' do
+      jb = JungleBeat.new("deep dop dop deep")
+      jb.voice = "Daniel"
+
+      expect(jb.reset_voice).to eq("Boing")
     end
   end
 
