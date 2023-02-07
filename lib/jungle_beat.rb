@@ -9,6 +9,10 @@ class JungleBeat
     append(init_sounds)
   end
 
+  def all
+    @list.to_string
+  end
+
   def append(sounds)
     append_count = 0
     sounds.split(' ').each do |sound| 
