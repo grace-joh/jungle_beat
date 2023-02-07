@@ -12,6 +12,14 @@ RSpec.describe JungleBeat do
       expect(jb.list).to be_an_instance_of(LinkedList)
       expect(jb.list.head).to be_nil
     end
+
+    it 'returns the numbers of sounds in a list' do
+      jb = JungleBeat.new
+      jb.append("deep doo ditt")
+      jb.append("woo hoo shu")
+
+      expect(jb.count).to eq(6)
+    end
   end
 
   describe '#append' do
@@ -23,6 +31,13 @@ RSpec.describe JungleBeat do
       expect(jb.list.head.data).to eq("deep")
       expect(jb.list.head.next_node.data).to eq("doo")
       expect(jb.list.head.next_node.next_node.data).to eq("ditt")
+    end
+
+    it 'omits any word not in defined list' do
+      jb = JungleBeat.new
+      jb.append("Mississippi")
+
+      expect(jb.count).to eq(0)
     end
   end
 
@@ -45,6 +60,16 @@ RSpec.describe JungleBeat do
       jb.append("woo hoo shu")
 
       expect(jb.play)
+    end
+  end
+
+  describe '#valid_beats' do
+    it 'checks if the sound is in the list' do
+      jb = JungleBeat.new
+
+      expect(jb.valid_beat?("deep")).to eq("deep")
+      expect(jb.valid_beat?("Mississippi")).to eq(nil)
+      
     end
   end
 end
