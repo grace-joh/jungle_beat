@@ -14,9 +14,7 @@ RSpec.describe JungleBeat do
     end
 
     it 'exists with init_sounds argument' do
-      jb = JungleBeat.new
-      jb.append('deep doo ditt')
-      jb.append('woo hoo shu')
+      jb = JungleBeat.new('deep doo ditt woo hoo shu')
 
       expect(jb).to be_an_instance_of(JungleBeat)
       expect(jb.count).to eq(6)
